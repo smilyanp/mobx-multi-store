@@ -1,4 +1,4 @@
-import { observable } from "mobx";
+import { observable, computed } from "mobx";
 
 class TwoStore {
 
@@ -7,7 +7,10 @@ class TwoStore {
     }
 
     @observable available = ['one', 'two'];
-    
+    @computed get fromStoreOne () {
+        return this.rootStore.oneStore.isLoading;
+    }
+
 }
 
 export default TwoStore;
